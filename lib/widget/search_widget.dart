@@ -337,7 +337,7 @@ class _SearchLocationState extends State<SearchLocation> with TickerProviderStat
           place.length < 45 ? "$place" : "${place.replaceRange(45, place.length, "")} ...",
           style: TextStyle(
             fontSize: MediaQuery.of(context).size.width * 0.04,
-            color: widget.darkMode ? Colors.grey[100] : Colors.grey[850],
+            color: Colors.black,
           ),
           maxLines: 1,
         ),
@@ -351,9 +351,8 @@ class _SearchLocationState extends State<SearchLocation> with TickerProviderStat
 
   BoxDecoration _containerDecoration() {
     return BoxDecoration(
-      color: widget.darkMode ? Colors.grey[800] : Colors.white,
+      color: Colors.transparent,
       borderRadius: BorderRadius.all(Radius.circular(6.0)),
-      boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 20, spreadRadius: 10)],
     );
   }
 
@@ -383,7 +382,6 @@ class _SearchLocationState extends State<SearchLocation> with TickerProviderStat
             ),
           ),
           Container(width: 15),
-          if (widget.hasClearButton)
             GestureDetector(
               onTap: () {
                 if (_crossFadeState == CrossFadeState.showSecond){
@@ -393,14 +391,7 @@ class _SearchLocationState extends State<SearchLocation> with TickerProviderStat
                 }
               },
               // child: Icon(_inputIcon, color: this.widget.iconColor),
-              child: AnimatedCrossFade(
-                crossFadeState: _crossFadeState,
-                duration: Duration(milliseconds: 300),
-                firstChild: Icon(widget.icon, color: widget.iconColor),
-                secondChild: Icon(Icons.clear, color: widget.iconColor),
-              ),
             ),
-          if (!widget.hasClearButton) Icon(widget.icon, color: widget.iconColor)
         ],
       ),
     );
@@ -414,7 +405,7 @@ class _SearchLocationState extends State<SearchLocation> with TickerProviderStat
       border: InputBorder.none,
       contentPadding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
       hintStyle: TextStyle(
-        color: widget.darkMode ? Colors.grey[100] : Colors.grey[850],
+        color: Colors.grey[850],
       ),
     );
   }
